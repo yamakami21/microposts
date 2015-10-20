@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def show
     # コントローラでビューにデータを渡す。
     # ここであれば、@userを渡す。
+    
+    # ユーザに紐づいたマイクロポストを@micropostsに代入する。（ユーザーの全投稿）
+    @microposts = @user.microposts
   end
   
   def new
