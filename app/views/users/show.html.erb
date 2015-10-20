@@ -3,4 +3,14 @@
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
-    
+
+<div id="profile">
+   <span class="glyphicon glyphicon-map-marker col-sm-1 "></span><%= @user.place %>
+</div>
+<div id="profile">
+    <span class="glyphicon glyphicon-user col-sm-1 "></span><%= @user.profile %>
+</div>
+
+<button type="button" class="btn btn-primary btn-lg pull-right">
+    <%= link_to "プロフィール編集" , edit_user_path(@user), style:"color: white;" %>
+</button>
