@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   private
-  def logg_user
+  def logged_in_user
     # logged_in がfalseの時のみ以下の処理を行う。
     unless logged_in?
       store_location

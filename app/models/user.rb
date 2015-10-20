@@ -19,4 +19,6 @@ class User < ActiveRecord::Base
     # - passwordとpassword_confirmationをモデルに追加してパスワードが一致するか検証する。
     # - パスワードが正しい時、ユーザーを返すauthenticate(信頼できるという意味)メソッドを提供する。
     has_secure_password
+    
+    has_many :microposts
 end
