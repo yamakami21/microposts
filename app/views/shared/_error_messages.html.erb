@@ -4,6 +4,7 @@ objectには、@userが入ります。ここでは、送信されたデータに
 -->
 <!--new.html.erbで使われる-->
 <% if object.errors.any? %>
+<!--customでスタイルをつけるためにidを付ける。-->
     <div id="error_explanation">
         <div class="alert alert-danger">
             <!--幾つのエラーが含まれているのかを示す。-->

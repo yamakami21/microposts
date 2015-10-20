@@ -1,0 +1,28 @@
+<h1>Log in</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        
+        <!--
+        :sessionはパラメータ
+        session[email], session[password]になる。
+        -->
+        <%= form_for(:session, url: login_path) do |f| %>
+        <!--ラベルだけ-->
+            <%= f.label :email %>
+            <!--
+            email,passwordの入力欄を設定する。
+            <input>タグにtype="email"がつき、メールアドレス形式の入力欄になる。
+            
+            -->
+            <%= f.email_field :email, class: 'form-control' %>
+            
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+            
+            <%= f.submit "Log in", class: 'btn btn-primary' %>
+        <% end %>
+        
+        <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
+</div>

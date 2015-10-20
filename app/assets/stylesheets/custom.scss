@@ -1,13 +1,16 @@
+// 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* universal */
 
 body {
+  // padding
   padding-top: 60px;
 }
 
 section {
+  // 領域内に収まりきらない場合どうするかを指定
   overflow: auto;
 }
 
@@ -18,7 +21,7 @@ textarea {
 .center {
   text-align: center;
 }
-
+// タイトル
 .center h1 {
   margin-bottom: 10px;
 }
@@ -56,11 +59,11 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #ddd;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 #logo:hover {
@@ -70,6 +73,8 @@ p {
 
 
 /* 追加 signupのところ*/ 
+// ビューにないクラスの指定がされている。
+// どう理解したらよいのだろうか。
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -94,6 +99,7 @@ input {
 }
 
 /* エラーに関して */
+
 #error_explanation {
   color: red;
   ul {

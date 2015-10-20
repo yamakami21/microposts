@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
+  # get 'sessions/new'
   # get 'users/new'
+  
   root to: 'static_pages#home'
   # signupというpathは、/signupというpathに対応し、userのnewというアクションに対応する。
-  get 'signup', to: 'user#new'
+  get 'signup', to: 'users#new'
+  
+  # ここで、login, logoutというパスでそれぞれログイン、ログアウトできるようにする。
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
