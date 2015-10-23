@@ -1,5 +1,7 @@
+<!--ログインしていれば-->
 <% if logged_in? %>
     <div class="row">
+        <!--サイドに表示するように指定する。-->
         <aside class="col-md-4">
             <section class="user_info">
                 <%= render 'shared/user_info'%>
@@ -8,9 +10,17 @@
                 <%= render 'shared/micropost_form'%>
             </section>    
         </aside>
+        <div class="col-md-8">
+            <h3>Micropost Feed</h3>
+            <%= render 'shared/feed'%>
+        </div>
     </div>
+<!--ログインしていなければ-->
 <% else %>
+
+<!--jumbotron枠線を確保してくれる-->
     <div class="center jumbotron">
+    <!--<div class="center">-->
         <h1>Welcome to the Microposts<h1>
             <%= link_to "Sign up now!", signup_path, class:"btn btn-lg btn-primary" %>
     </div>

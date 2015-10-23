@@ -21,4 +21,36 @@ class User < ActiveRecord::Base
     has_secure_password
     
     has_many :microposts
+    
+    # フォローされている人を取得
+    has_many :following_relationships, class_name: "Relationship",
+                                       foreign_key: "follower_id",
+                                       dependent: :destroy
+    has_many :following_users, through: :following_relationships, source: :followed
+    # フォローしている人を取得
+    has_many :follower_relationships, class_name:  "Relationship",
+                                    foreign_key: "followed_id",
+                                    dependent:   :destroy
+    has_many :follower_users, through: :follower_relationships, source: :follower                                  
+    
+    # フォロー関係のメソッド
+    
+    # 他の人をフォローする
+    def follow(other_user)
+        following_relationships.create(followed_id: other_user.id)
+    end
+    
+    # following_relationshipsからフォローしているユーザのuser_idが入っているものを削除する
+    def unfollow(other_user)
+        following_relationships.find_by(followed_id: other_user.id).destroy
+    end
+    
+    # 他のユーザがfollowing_usersに入っているかをチェックする。
+    def following?(other_user)
+        following_users.include?(other_user)
+    end
+    
+    def feed_items
+        Micropost.where(user_id: following_user_ids + [self.id])
+    end
 end

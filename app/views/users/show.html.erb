@@ -13,16 +13,18 @@
             <div id="profile">
                 <span class="glyphicon glyphicon-user col-sm-1 "></span><%= @user.profile %>
             </div>
-            
-            <button type="button" class="btn btn-primary btn-lg pull-right">
+            <br>
+            <button type="button" class="btn btn-primary btn-lg pull-right btn-sm">
                 <%= link_to "プロフィール編集" , edit_user_path(@user), style:"color: white;" %>
             </button>
         </section>
     </aside>
     <div class ="col-md-8">
+        <%= render 'follow_form' if logged_in? %>
         <% if @user.microposts.any? %>
             <h3>Microposts (<%= @user.microposts.count %>)</h3>
             <ol class="microposts">
+                <!--views/microposts/_micropost.html.erb-->
                 <%= render @microposts %>
             </ol>
         <% end %>

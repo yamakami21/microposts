@@ -1,4 +1,7 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<%= link_to gravatar_for(current_user, size: 60), current_user %>
 <h1><%= current_user.name %></h1>
+
+<!--リンク先が/users/numberになぜなるのかわからない。-->
 <span><%= link_to "view my profile", current_user %></span>
+<!--単数形の英語を複数形に直すメソッド-->
 <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
