@@ -53,4 +53,13 @@ class User < ActiveRecord::Base
     def feed_items
         Micropost.where(user_id: following_user_ids + [self.id])
     end
+    
+    # フォロー数、フォロワー数を数える。
+    def number_followings
+        following_relationships.size
+    end
+    
+    def number_follower
+        follower_relationships.size
+    end
 end

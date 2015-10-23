@@ -1,7 +1,24 @@
 <%= link_to gravatar_for(current_user, size: 60), current_user %>
-<h1><%= current_user.name %></h1>
+<h1><%= link_to current_user.name, current_user  %></h1>
 
 <!--リンク先が/users/numberになぜなるのかわからない。-->
 <span><%= link_to "view my profile", current_user %></span>
 <!--単数形の英語を複数形に直すメソッド-->
-<span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+<br>
+<br>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center col-xs-4">Tweets</th>
+            <th class="text-center col-xs-4">Follow</th>
+            <th class="text-center col-xs-4">Follower</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id ="table_element">
+          <td class="text-center col-xs-4"><%= current_user.microposts.count %></td>
+          <td class="text-center col-xs-4"><%= link_to current_user.number_followings %></td>
+          <td class="text-center col-xs-4"><%= link_to current_user.number_follower%></td>
+        </tr>
+    </tbody>
+</table>
