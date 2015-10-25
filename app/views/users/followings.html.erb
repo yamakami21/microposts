@@ -1,0 +1,34 @@
+
+
+<div class="row">
+    <aside class="col-md-4">
+        <h1>Followings</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center col-xs-4">Followings</th>
+                    <th class="text-center col-xs-4">Followers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id ="table_element">
+                  <td class="text-center col-xs-4"><%= current_user.number_followings %></td>
+                  <td class="text-center col-xs-4"><%= link_to current_user.number_followers,followers_user_path(current_user) %></td>
+                
+                </tr>
+            </tbody>
+        </table>
+        </section>
+    </aside>
+    <div class="col-md-8">
+        <h1>List</h1>
+        <ol class="followings-followers">
+            <% @followings.each do |followings| %>
+                <div class="gravatar"><%= gravatar_for followings %></div>
+                <li class="name"><%= link_to followings.name, user_path(followings.id)%></li>
+                <div class="profile"><%= followings.profile %></div>
+                <br>
+            <% end %>
+        </ol>
+    </div>
+</div>

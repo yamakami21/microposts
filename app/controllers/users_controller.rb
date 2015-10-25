@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
   
   def show
     # コントローラでビューにデータを渡す。
@@ -39,6 +39,15 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def followings
+    @followings = @user.following_users
+  end
+  
+  def followers
+    @followers = @user.follower_users
+  end
+  
   
   private
     # ストローングパラメータでpasswordとpassword_confirmationというデータベースにない属性を指定していることに注意

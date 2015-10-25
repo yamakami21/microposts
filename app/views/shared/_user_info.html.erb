@@ -10,15 +10,17 @@
     <thead>
         <tr>
             <th class="text-center col-xs-4">Tweets</th>
-            <th class="text-center col-xs-4">Follow</th>
-            <th class="text-center col-xs-4">Follower</th>
+            <th class="text-center col-xs-4">Followings</th>
+            <th class="text-center col-xs-4">Followers</th>
         </tr>
     </thead>
     <tbody>
         <tr id ="table_element">
           <td class="text-center col-xs-4"><%= current_user.microposts.count %></td>
-          <td class="text-center col-xs-4"><%= link_to current_user.number_followings %></td>
-          <td class="text-center col-xs-4"><%= link_to current_user.number_follower%></td>
+            
+          <td class="text-center col-xs-4"><%= link_to current_user.number_followings, followings_user_path(current_user) %></td>
+          <td class="text-center col-xs-4"><%= link_to current_user.number_followers, followers_user_path(current_user) %></td>
+        
         </tr>
     </tbody>
 </table>

@@ -50,16 +50,24 @@ class User < ActiveRecord::Base
         following_users.include?(other_user)
     end
     
+    # 毒zのメソッドを作ることができる。
     def feed_items
         Micropost.where(user_id: following_user_ids + [self.id])
     end
     
-    # フォロー数、フォロワー数を数える。
     def number_followings
-        following_relationships.size
+        following_relationships.count
     end
     
-    def number_follower
-        follower_relationships.size
+    def number_followers
+        follower_relationships.count
     end
+        # 課題途中で失敗したもの。
+    # def detail_followings(self_id)
+    #     following_relationships.find_by(follower_id: self_id.id).inspect
+    # end
+    
+    # def detail_followers(self_id)
+    #     follower_relationships.find_by(follower_id: self_id.id).inspect
+    # end
 end
