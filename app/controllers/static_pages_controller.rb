@@ -7,8 +7,8 @@ class StaticPagesController < ApplicationController
         
         # feed_itemsで現在のユーザーのフォローしているユーザーを取得し、
         # order(created_at: :desc)投稿日で並び替え
-        @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
-
+        @feed_items = current_user.feed_items.includes(:user).page(params[:page]).per(10).order(created_at: :desc)
+        
       end 
   end
 end

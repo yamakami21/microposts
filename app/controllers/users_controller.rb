@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     # ここであれば、@userを渡す。
     
     # ユーザに紐づいたマイクロポストを@micropostsに代入する。（ユーザーの全投稿）
-    @microposts = @user.microposts
+    @microposts = @user.microposts.page(params[:page]).per(10).order(created_at: :desc)
   end
   
   def new
