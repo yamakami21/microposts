@@ -3,10 +3,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
   
   def show
-    # コントローラでビューにデータを渡す。
-    # ここであれば、@userを渡す。
-    
-    # ユーザに紐づいたマイクロポストを@micropostsに代入する。（ユーザーの全投稿）
     @microposts = @user.microposts.page(params[:page]).per(10).order(created_at: :desc)
   end
   
@@ -50,7 +46,6 @@ class UsersController < ApplicationController
   
   
   private
-    # ストローングパラメータでpasswordとpassword_confirmationというデータベースにない属性を指定していることに注意
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :place, :profile)
     end
