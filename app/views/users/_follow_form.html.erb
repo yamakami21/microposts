@@ -1,5 +1,4 @@
 <% if current_user != @user %>
-<!--フォロー、フォローのフォームを切り替えるためのビューを作成する-->
     <div id="follow_form">
         <% if current_user.following?(@user) %>
             <%= render 'unfollow'%>

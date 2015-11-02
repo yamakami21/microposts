@@ -5,13 +5,15 @@
     <span class="timestamp">
         Posted <%= time_ago_in_words(micropost.created_at) %> ago.
         
-        <!--
-        マイクロポストの投稿者が現在のユーザーと一致する場合は、
-        リンクにDELETEメソッドを指定してmicropostのURLに対してリクエストを送る
-        -->
-        <% if current_user == micropost.user %>
-             <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
+        <% if logged_in? %>
+            <% if current_user == micropost.user %>
+                <%= link_to "delete", micropost, method: :delete,
+                                           data: { confirm: "You sure?" } %>
+            <% else %>
+                <span id="like_form-<%= micropost.id %>">
+                  <%= render partial: 'likes/like_form', locals: { micropost: micropost } %>
+                </span>
+            <% end %>
         <% end %>
     </span>
 </li>
