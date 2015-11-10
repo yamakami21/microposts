@@ -15,5 +15,12 @@
                 </span>
             <% end %>
         <% end %>
+        
+        
+        
+        　<% if micropost.image? %>
+        　　<%= image_tag micropost.image.thumb.url %>
+        　<% else %>
+        　<% end %>
     </span>
 </li>
